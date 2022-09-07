@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
+*{
+    padding: 0%;
+    margin: 0%;
+    font-family: 'Luckiest Guy', cursive;
+    color: #624809;
+}
+.box_elements{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+h1{
+    letter-spacing: 0.5em;
+    font-size: 55px;
+    color: #624809;
+    cursor: default;
+}
+.filds{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 30vh;
+}
+label{
+    font-size: 30px;
+    color: #624809;
+    border-bottom: 2px dotted #624809;
+}
+#name{
+    border: none;
+    outline: none;
+    margin: 1%;
+    font-size: 25px;
+    padding: 1% 2% 0.5%;
+    border-radius: 20px;
+    color: #624809;
+    border: 3px outset #624809;
+    transition: 1s;
+}
+#name:hover{
+    box-shadow: 0 0 10px #624809;
+
+}
+#name:focus{
+    box-shadow: 0 0 13px 3px #193f32;
+    border: 3px outset #48937a;
+}
+.startBtn{
+    padding: 1% 3% 0.5%;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 60px;
+    font-size: 2em;
+    letter-spacing: 0.2em;
+    background-color: #624809;
+    color: #ffffffcd;
+    border: none;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.startBtn:hover{
+    transform: scale(1.05);
+    text-shadow: 0 0 5px #48937a;
+    box-shadow: 0 0 10px 3px #48937a;
+}
+.startBtn:active{
+    text-shadow: none;
+    color: #48937a;
+    background-color: #3c2b05;
+}
+.groots{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-self: flex-end;
+}
+.groots img{
+    transition: 1s;
+    cursor: pointer;
+}
+.groots img:hover{
+    animation-name: groot;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+.box_bcg{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -3;
+    background: url(./img/mainBcg.png) center/cover no-repeat;
+}
+@keyframes groot{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

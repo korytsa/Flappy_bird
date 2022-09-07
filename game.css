@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
+*{
+    padding: 0%;
+    margin: 0%;
+    font-family: 'Luckiest Guy', cursive;
+
+}
+#canvas{
+    position: absolute;
+}
+
+#popup{
+    display: none;
+}
+.popup-container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(46, 35, 47, 0.848);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.popup{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 30px;
+    width: 90%;
+    border-radius: 15px;
+}
+.popup > img{
+    margin-bottom: 5em;
+}
+.popup > h2{
+    font-size: 3em;
+    margin-bottom: 5%;
+    color: #b02b2a;
+    text-shadow: 0 0 15px #281718;
+}
+.btns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btns button{
+    padding: 4% 5% 2%;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 60px;
+    font-size: 1.5em;
+    letter-spacing: 0.2em;
+    background-color: #b02b2a;
+    color: #ffffffcd;
+    border: none;
+    transition: 0.5s;
+    cursor: pointer;
+    margin: 0% 3%;
+    white-space: nowrap;
+    border: 5px double #281718;
+    transition: 0.5s;
+}
+.btns button:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 10px 4px #281718;
+    color: #ffffff94;
+}
+.btns button:active{
+    border: 5px solid #281718;
+}
+
+
+
