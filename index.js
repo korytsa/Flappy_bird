@@ -1,14 +1,3 @@
-// const startBtn = document.querySelector('.startBtn');
-// const input = document.querySelector('#name');
-// const form = document.querySelector('.filds')
-
-// const handleSubmit =  (e) => {
-//     e.preventDefault();
-//     localStorage.setItem("name", input.value);
-//     window.location = "game.html";
-// }
-
-// form.addEventListener("submit", handleSubmit, false);
 const form = document.querySelector(".filds");
 const input = document.querySelector("#name");
 const button = document.querySelector(".startBtn");
@@ -16,7 +5,7 @@ const button = document.querySelector(".startBtn");
 const validInput = ({
     target
 }) => {
-    if (target.value.length > 2 && target.value.length < 15) {
+    if (target.value.length > 2 && target.value.length < 10) {
         button.removeAttribute('disabled');
         return
     }

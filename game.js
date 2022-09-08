@@ -83,9 +83,9 @@ console.log(e.keyCode)
 });
 
 document.addEventListener('touchend', () => {
-    yPos -= 25;
+    yPos -= 40;
     grootSounds.play()
-    window.navigator.vibrate(200)
+    window.navigator.vibrate(400)
 })
 
 pipe[0] = {

@@ -59,7 +59,7 @@ label{
     border-radius: 60px;
     font-size: 2em;
     letter-spacing: 0.2em;
-    background-color: #624809;
+    background: linear-gradient(#674b0b, #473306);
     color: #ffffffcd;
     border: none;
     transition: 0.5s;
@@ -74,6 +74,9 @@ label{
     text-shadow: none;
     color: #48937a;
     background-color: #3c2b05;
+}
+.startBtn:disabled{
+    background: linear-gradient(rgb(122, 122, 122), rgb(48, 48, 48));
 }
 .groots{
     display: flex;
