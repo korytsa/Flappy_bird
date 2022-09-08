@@ -99,7 +99,7 @@ function draw() {
 
     drawGroot();
 
-    ctx.drawImage(fg, 0, cvs.height - fg.height + 20);
+    ctx.drawImage(fg, 0, cvs.height - fg.height + 20, cvs.width, cvs.height);
 
     ctx.fillStyle = "#fff";
     ctx.font = "24px Luckiest Guy";
