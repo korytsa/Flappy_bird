@@ -19,6 +19,7 @@ let grav = 1.5;
 let gap = 230;
 let pipe = [];
 var score = 0;
+let failAudioPlay = 0;
 
 groot.src = "img/groot.png";
 bg.src = "img/bcg.jpeg";
@@ -26,11 +27,9 @@ fg.src = "img/earth.png";
 pipeUp.src = "img/up.png";
 pipeBottom.src = "img/bottom.png";
 
-
-
 document.addEventListener('DOMContentLoaded', draw)
 
-//warning
+// warning
 // window.onbeforeunload = function () {
 //     return "Are you sure?";
 // }
@@ -55,6 +54,8 @@ fail_audio.src = "sounds/fail.mp3";
 
 //controls
 document.addEventListener("keydown", (e) => {
+console.log(e.keyCode)
+
     switch (e.keyCode) {
         case 38:
             yPos -= 25;
@@ -72,12 +73,18 @@ document.addEventListener("keydown", (e) => {
             xPos -= 25;
             grootSounds.play()
             break;
+        case 32:
+            yPos -= 25;
+            grootSounds.play()
+            break;
         default:
             break;
     }
 });
-document.addEventListener('click', () => {
+
+document.addEventListener('touchmove', () => {
     yPos -= 25;
+    grootSounds.play()
     window.navigator.vibrate(200)
 })
 
@@ -101,7 +108,7 @@ function draw() {
 
     requestAnimationFrame(draw);
 }
-let failAudioPlay = 0;
+
 function drawGroot() {
     yPos += grav;
 
@@ -135,11 +142,10 @@ function drawGroot() {
             popup.style.display = 'block';
             pipe[i].x = cvs.width;
             result.textContent = `Ваш результат: ${score}`;
-            if(failAudioPlay === 0){
+            if (failAudioPlay === 0) {
                 fail_audio.play();
-                failAudioPlay +=1;
+                failAudioPlay += 1;
             }
-                
         }
 
         if (xPos + groot.width === pipe[i].x + pipeUp.width) {
