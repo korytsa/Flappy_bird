@@ -4,12 +4,10 @@
     padding: 0%;
     margin: 0%;
     font-family: 'Luckiest Guy', cursive;
-
 }
 #canvas{
     position: absolute;
 }
-
 #popup{
     display: none;
 }
@@ -48,7 +46,7 @@
     align-items: center;
     justify-content: center;
 }
-.btns button{
+.btns button, .mainPageBtn{
     padding: 4% 5% 2%;
     width: fit-content;
     height: fit-content;
@@ -65,14 +63,27 @@
     border: 5px double #281718;
     transition: 0.5s;
 }
-.btns button:hover{
+.btns button:hover, .mainPageBtn:hover{
     transform: scale(1.05);
     box-shadow: 0 0 10px 4px #281718;
     color: #ffffff94;
 }
-.btns button:active{
+.btns button:active, .mainPageBtn:active{
     border: 5px solid #281718;
 }
+.mainPageBtn{
+    padding: 1.35% 3% 0.5%;
+    margin: 1% 3%;
 
+}
+@media (max-width: 960px) {
+    
+}
+@media (max-width: 500px) {
+    
+}
+@media (max-width: 340px) {
+    
+}
 
 

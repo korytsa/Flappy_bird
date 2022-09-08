@@ -107,3 +107,45 @@ label{
         transform: rotate(360deg);
     }
 }
+@media (max-width: 760px) {
+    h1{
+        font-size: 35px;
+    }
+    label{
+        font-size: 25px;
+    }
+    #name{
+        width: 50%;
+    }
+    .startBtn{
+        font-size: 1.8em;
+    }
+}
+@media (max-width: 500px) {
+    h1{
+        font-size: 25px;
+    }
+    label{
+        font-size: 20px;
+    }
+    #name{
+        width: 50%;
+    }
+    .startBtn{
+        font-size: 1.3em;
+    }
+}
+@media (max-width: 340px) {
+    h1{
+        font-size: 20px;
+    }
+    label{
+        font-size: 16px;
+    }
+    #name{
+        width: 50%;
+    }
+    .startBtn{
+        font-size: 1em;
+    }
+}

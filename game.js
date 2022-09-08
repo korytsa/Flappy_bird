@@ -1,6 +1,12 @@
 let cvs = document.getElementById("canvas");
 let ctx = cvs.getContext("2d");
 
+const popup = document.getElementById("popup");
+const result = document.querySelector('.result');
+const ratingBtn = document.querySelector('.ratingBtn');
+const mainPageBtn = document.querySelector('.mainPageBtn');
+const againBtn = document.querySelector('.againBtn');
+
 let groot = new Image();
 let bg = new Image();
 let fg = new Image();
@@ -9,8 +15,8 @@ let pipeBottom = new Image();
 
 let xPos = 100;
 let yPos = 150;
-let grav = 5;
-let gap = 200;
+let grav = 1.5;
+let gap = 230;
 let pipe = [];
 var score = 0;
 
@@ -20,15 +26,28 @@ fg.src = "img/earth.png";
 pipeUp.src = "img/up.png";
 pipeBottom.src = "img/bottom.png";
 
-document.addEventListener('DOMContentLoaded', draw)
-document.addEventListener("keydown", moveUp);
-
 cvs.width = window.innerWidth;
 cvs.height = window.innerHeight;
 
-function moveUp() {
-    yPos -= 45;
-}
+document.addEventListener('DOMContentLoaded', draw)
+document.addEventListener("keydown", (e) => {
+    switch (e.keyCode) {
+        case 38:
+            yPos -= 25;
+            break;
+        case 40:
+            yPos += 25;
+            break;
+        case 39:
+            xPos += 25;
+            break;
+        case 37:
+            xPos -= 25;
+            break;
+        default:
+            break;
+    }
+});
 
 pipe[0] = {
     x: cvs.width,
@@ -36,15 +55,17 @@ pipe[0] = {
 }
 
 function draw() {
-    ctx.drawImage(bg, 0, 0);
+    ctx.drawImage(bg, 0, 0, cvs.width, cvs.height);
     ctx.drawImage(groot, xPos, yPos);
-    drawGroot()
+
+    drawGroot();
 
     ctx.drawImage(fg, 0, cvs.height - fg.height + 10);
 
     ctx.fillStyle = "#fff";
     ctx.font = "24px Luckiest Guy";
-    ctx.fillText("Счет: " + score, 10, cvs.height - 20);
+    ctx.fillText("Score: " + score, 10, cvs.height - 20);
+    ctx.fillText("Name: " + localStorage.getItem('player'), 170, cvs.height - 20);
 
     requestAnimationFrame(draw);
 }
@@ -53,12 +74,12 @@ function drawGroot() {
     yPos += grav;
 
     for (let i = 0; i < pipe.length; i++) {
-        ctx.drawImage(pipeUp, pipe[i].x - 100, pipe[i].y);
-        ctx.drawImage(pipeBottom, pipe[i].x, pipe[i].y + pipeUp.height + gap);
+        ctx.drawImage(pipeUp, pipe[i].x, pipe[i].y - 190);
+        ctx.drawImage(pipeBottom, pipe[i].x, pipe[i].y - 190 + pipeUp.height + gap);
 
         pipe[i].x -= 1;
 
-        if (pipe[i].x == 1167) {
+        if (pipe[i].x == 1000) {
             pipe.push({
                 x: cvs.width,
                 y: Math.floor(Math.random() * pipeUp.height) - pipeUp.height
@@ -67,22 +88,33 @@ function drawGroot() {
 
         if (xPos + groot.width >= pipe[i].x &&
             xPos <= pipe[i].x + pipeUp.width &&
-            (yPos <= pipe[i].y + pipeUp.height ||
-            yPos + groot.height >= pipe[i].y + pipeUp.height + gap) ||
-            yPos + groot.height >= cvs.height - fg.height) {
+            (yPos <= pipe[i].y - 190 + pipeUp.height ||
+                yPos + groot.height >= pipe[i].y + pipeUp.height + gap) || yPos + groot.height >= cvs.height - fg.height) {
 
             popup.style.display = 'block';
-            return 
-            // location.reload();
+            pipe[i].x = cvs.width;
+            result.textContent = `Ваш результат: ${score}`;
         }
-        console.log(pipe[i].x)
-        if (pipe[i].x == 36) {
+
+        if (xPos + groot.width === pipe[i].x + pipeUp.width) {
             score++;
-        } //score?????????????????/
+        }
     }
 }
-const popup = document.getElementById("popup");
 
-popup.addEventListener('click', () => {
-    popup.style.display = 'none';
-});
+againBtn.addEventListener('click', () => {
+    location.reload();
+})
+
+ratingBtn.addEventListener('click', () => {
+    // const obj = {
+    //     'name': localStorage.getItem('player'),
+    //     'score': score
+    // };
+    // localStorage.setItem('object', JSON.stringify(obj));
+    window.location = "./result.html";
+})
+
+mainPageBtn.addEventListener('click', () => {
+    window.location = "./index.html";
+})
