@@ -116,6 +116,7 @@ label{
     }
     #name{
         width: 50%;
+        font-size: 23px;
     }
     .startBtn{
         font-size: 1.8em;
@@ -130,6 +131,7 @@ label{
     }
     #name{
         width: 50%;
+        font-size: 19px;
     }
     .startBtn{
         font-size: 1.3em;
@@ -144,6 +146,7 @@ label{
     }
     #name{
         width: 50%;
+        font-size: 16px;
     }
     .startBtn{
         font-size: 1em;

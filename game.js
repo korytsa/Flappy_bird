@@ -26,6 +26,16 @@ fg.src = "img/earth.png";
 pipeUp.src = "img/up.png";
 pipeBottom.src = "img/bottom.png";
 
+
+
+document.addEventListener('DOMContentLoaded', draw)
+
+//warning
+// window.onbeforeunload = function () {
+//     return "Are you sure?";
+// }
+
+//size
 cvs.width = window.innerWidth;
 cvs.height = window.innerHeight;
 
@@ -34,33 +44,42 @@ window.addEventListener('resize', function () {
     cvs.height = window.innerHeight;
 }, true);
 
-document.addEventListener('DOMContentLoaded', draw)
+//sounds
+const grootSounds = new Audio();
+const score_audio = new Audio();
+const fail_audio = new Audio();
+
+grootSounds.src = "sounds/Groot.mp3";
+score_audio.src = "sounds/score.mp3";
+fail_audio.src = "sounds/fail.mp3";
+
+//controls
 document.addEventListener("keydown", (e) => {
     switch (e.keyCode) {
         case 38:
             yPos -= 25;
+            grootSounds.play()
             break;
         case 40:
             yPos += 25;
+            grootSounds.play()
             break;
         case 39:
             xPos += 25;
+            grootSounds.play()
             break;
         case 37:
             xPos -= 25;
+            grootSounds.play()
             break;
         default:
             break;
     }
 });
 document.addEventListener('click', () => {
-    window.navigator.vibrate(200)
     yPos -= 25;
+    window.navigator.vibrate(200)
 })
-
-// window.onbeforeunload = function () {
-//     return "Are you sure?";
-// }
 
 pipe[0] = {
     x: cvs.width,
@@ -82,7 +101,7 @@ function draw() {
 
     requestAnimationFrame(draw);
 }
-
+let failAudioPlay = 0;
 function drawGroot() {
     yPos += grav;
 
@@ -116,14 +135,21 @@ function drawGroot() {
             popup.style.display = 'block';
             pipe[i].x = cvs.width;
             result.textContent = `Ваш результат: ${score}`;
+            if(failAudioPlay === 0){
+                fail_audio.play();
+                failAudioPlay +=1;
+            }
+                
         }
 
         if (xPos + groot.width === pipe[i].x + pipeUp.width) {
             score++;
+            score_audio.play()
         }
     }
 }
 
+//buttons from popup
 againBtn.addEventListener('click', () => {
     location.reload();
 })
