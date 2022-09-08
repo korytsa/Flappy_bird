@@ -82,7 +82,7 @@ console.log(e.keyCode)
     }
 });
 
-document.addEventListener('touchmove', () => {
+document.addEventListener('touchend', () => {
     yPos -= 25;
     grootSounds.play()
     window.navigator.vibrate(200)
