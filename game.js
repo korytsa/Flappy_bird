@@ -48,6 +48,9 @@ document.addEventListener("keydown", (e) => {
             break;
     }
 });
+document.addEventListener('touchstart', () => {
+    yPos -= 25;
+})
 
 pipe[0] = {
     x: cvs.width,
@@ -60,12 +63,12 @@ function draw() {
 
     drawGroot();
 
-    ctx.drawImage(fg, 0, cvs.height - fg.height + 10);
+    ctx.drawImage(fg, 0, cvs.height - fg.height + 20);
 
     ctx.fillStyle = "#fff";
     ctx.font = "24px Luckiest Guy";
-    ctx.fillText("Score: " + score, 10, cvs.height - 20);
-    ctx.fillText("Name: " + localStorage.getItem('player'), 170, cvs.height - 20);
+    ctx.fillText("Score: " + score, 10, cvs.height - 15);
+    ctx.fillText("Name: " + localStorage.getItem('player'), 170, cvs.height - 15);
 
     requestAnimationFrame(draw);
 }
@@ -79,12 +82,25 @@ function drawGroot() {
 
         pipe[i].x -= 1;
 
-        if (pipe[i].x == 1000) {
-            pipe.push({
-                x: cvs.width,
-                y: Math.floor(Math.random() * pipeUp.height) - pipeUp.height
-            });
+        if(cvs.width >= 1100){
+            console.log(1111)
+            if (pipe[i].x == 1000) {
+                pipe.push({
+                    x: cvs.width,
+                    y: Math.floor(Math.random() * pipeUp.height) - pipeUp.height
+                });
+            }
+        } else if(cvs.width <= 600){
+            window.navigator.vibrate(200)
+            if (pipe[i].x == 50) {
+                pipe.push({
+                    x: cvs.width,
+                    y: Math.floor(Math.random() * pipeUp.height) - pipeUp.height
+                });
+            }
         }
+        console.log(pipe[i].x)
+       
 
         if (xPos + groot.width >= pipe[i].x &&
             xPos <= pipe[i].x + pipeUp.width &&
