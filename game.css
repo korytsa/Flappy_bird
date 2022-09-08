@@ -33,13 +33,24 @@
     border-radius: 15px;
 }
 .popup > img{
-    margin-bottom: 5em;
+    margin-bottom: 4em;
 }
-.popup > h2{
-    font-size: 3em;
-    margin-bottom: 5%;
+.popup > h2,.popup > h5{
+    font-size: 2em;
+    margin-bottom: 2%;
     color: #b02b2a;
     text-shadow: 0 0 15px #281718;
+}
+.joke{
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 3%;
+    color: #b02b2a;
+    text-shadow: 0 0 15px #281718;
+    border: 5px double #281718;
+    padding: 0.5em 0.3em 0.3em;
+    background-color: #281718b9;
+    border-radius: 20px;
 }
 .btns{
     display: flex;
@@ -81,9 +92,13 @@
         width: 80%;
         margin-bottom: 3em;
     }
-    .popup > h2{
-        font-size: 2em;
+    .popup > h2, .popup > h5{
+        font-size: 1.3em;
         margin-bottom: 5%;
+    }
+    .joke{
+        font-size: 1.2em;
+        margin-bottom: 2%;
     }
     .btns button, .mainPageBtn{
         font-size: 1.1em;
@@ -95,9 +110,13 @@
         width: 60%;
         margin-bottom: 2em;
     }
-    .popup > h2{
-        font-size: 1.5em;
+    .popup > h2, .popup > h5{
+        font-size: 0.9em;
         margin-bottom: 4%;
+    }
+    .joke{
+        font-size: 0.7em;
+        margin-bottom: 3%;
     }
     .btns button, .mainPageBtn{
         font-size: 0.9em;

@@ -6,6 +6,7 @@ const result = document.querySelector('.result');
 const ratingBtn = document.querySelector('.ratingBtn');
 const mainPageBtn = document.querySelector('.mainPageBtn');
 const againBtn = document.querySelector('.againBtn');
+const joke = document.querySelector('.joke');
 
 let groot = new Image();
 let bg = new Image();
@@ -29,6 +30,13 @@ pipeBottom.src = "img/bottom.png";
 
 document.addEventListener('DOMContentLoaded', draw)
 
+async function loadJoke(){
+    const response = await fetch('https://v2.jokeapi.dev/joke/Any?blacklistFlags=religious');
+    const data = await response.json();
+
+    joke.textContent = `${data.setup}`;
+    console.log(data.setup)
+}
 // warning
 // window.onbeforeunload = function () {
 //     return "Are you sure?";
@@ -54,8 +62,6 @@ fail_audio.src = "sounds/fail.mp3";
 
 //controls
 document.addEventListener("keydown", (e) => {
-console.log(e.keyCode)
-
     switch (e.keyCode) {
         case 38:
             yPos -= 25;
@@ -141,8 +147,9 @@ function drawGroot() {
 
             popup.style.display = 'block';
             pipe[i].x = cvs.width;
-            result.textContent = `Ваш результат: ${score}`;
+            result.textContent = `Your results: ${score}`;
             if (failAudioPlay === 0) {
+                loadJoke()
                 fail_audio.play();
                 failAudioPlay += 1;
             }
@@ -172,3 +179,5 @@ ratingBtn.addEventListener('click', () => {
 mainPageBtn.addEventListener('click', () => {
     window.location = "./index.html";
 })
+
+//random joke
