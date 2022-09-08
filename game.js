@@ -29,6 +29,11 @@ pipeBottom.src = "img/bottom.png";
 cvs.width = window.innerWidth;
 cvs.height = window.innerHeight;
 
+window.addEventListener('resize', function () {
+    cvs.width = window.innerWidth;
+    cvs.height = window.innerHeight;
+}, true);
+
 document.addEventListener('DOMContentLoaded', draw)
 document.addEventListener("keydown", (e) => {
     switch (e.keyCode) {
@@ -53,6 +58,10 @@ document.addEventListener('click', () => {
     yPos -= 25;
 })
 
+// window.onbeforeunload = function () {
+//     return "Are you sure?";
+// }
+
 pipe[0] = {
     x: cvs.width,
     y: 0
@@ -69,7 +78,7 @@ function draw() {
     ctx.fillStyle = "#fff";
     ctx.font = "24px Luckiest Guy";
     ctx.fillText("Score: " + score, 10, cvs.height - 15);
-    ctx.fillText("Name: " + localStorage.getItem('player'), 170, cvs.height - 15);
+    ctx.fillText("Name: " + localStorage.getItem('player'), 120, cvs.height - 15);
 
     requestAnimationFrame(draw);
 }
@@ -83,14 +92,14 @@ function drawGroot() {
 
         pipe[i].x -= 1;
 
-        if(cvs.width >= 1100){
+        if (cvs.width >= 1100) {
             if (pipe[i].x == 1000) {
                 pipe.push({
                     x: cvs.width,
                     y: Math.floor(Math.random() * pipeUp.height) - pipeUp.height
                 });
             }
-        } else if(cvs.width <= 600){
+        } else if (cvs.width <= 600) {
             if (pipe[i].x == 50) {
                 pipe.push({
                     x: cvs.width,
@@ -98,8 +107,6 @@ function drawGroot() {
                 });
             }
         }
-        console.log(pipe[i].x)
-       
 
         if (xPos + groot.width >= pipe[i].x &&
             xPos <= pipe[i].x + pipeUp.width &&
