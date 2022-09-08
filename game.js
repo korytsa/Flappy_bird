@@ -49,6 +49,7 @@ document.addEventListener("keydown", (e) => {
     }
 });
 document.addEventListener('touchstart', () => {
+    window.navigator.vibrate(200)
     yPos -= 25;
 })
 
@@ -83,7 +84,6 @@ function drawGroot() {
         pipe[i].x -= 1;
 
         if(cvs.width >= 1100){
-            console.log(1111)
             if (pipe[i].x == 1000) {
                 pipe.push({
                     x: cvs.width,
@@ -91,7 +91,6 @@ function drawGroot() {
                 });
             }
         } else if(cvs.width <= 600){
-            window.navigator.vibrate(200)
             if (pipe[i].x == 50) {
                 pipe.push({
                     x: cvs.width,
