@@ -48,7 +48,7 @@ document.addEventListener("keydown", (e) => {
             break;
     }
 });
-document.addEventListener('touchstart', () => {
+document.addEventListener('touchmove', () => {
     window.navigator.vibrate(200)
     yPos -= 25;
 })
