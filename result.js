@@ -25,7 +25,6 @@ tr.appendChild(th1)
 tr.appendChild(th2)
 tr.appendChild(th3)
 
-
 //info output
 const names = [];
 const score = [];

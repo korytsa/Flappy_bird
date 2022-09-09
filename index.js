@@ -2,14 +2,11 @@ const form = document.querySelector(".filds");
 const input = document.querySelector("#name");
 const button = document.querySelector(".startBtn");
 
-const validInput = ({
-    target
-}) => {
+const validInput = ({target}) => {
     if (target.value.length > 2 && target.value.length < 10) {
         button.removeAttribute('disabled');
         return
     }
-   
     button.setAttribute("disabled", "");
 };
 

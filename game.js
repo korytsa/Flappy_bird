@@ -63,9 +63,6 @@ fail_audio.src = "sounds/fail.mp3";
 
 //controls
 document.addEventListener("keydown", (e) => {
-    if (e.keyCode === 38 || e.keyCode === 40 || e.keyCode === 39 || e.keyCode === 37 || e.keyCode === 32) {
-
-    }
     switch (e.keyCode) {
         case 38:
             yPos -= 25;
@@ -92,10 +89,11 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
-document.addEventListener('touchend', () => {
+document.addEventListener('click', (e) => {
     yPos -= 40;
     grootSounds.play()
     window.navigator.vibrate(400)
+    console.log(e)
 })
 
 //logic
@@ -105,7 +103,6 @@ pipe[0] = {
 }
 
 function draw() {
-
     ctx.drawImage(bg, 0, 0, cvs.width, cvs.height);
     ctx.drawImage(groot, xPos, yPos);
 
@@ -160,7 +157,6 @@ function drawGroot() {
                 loadcoctail()
                 fail_audio.play();
                 failAudioPlay += 1;
-
             }
         }
 
