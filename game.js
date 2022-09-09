@@ -39,9 +39,9 @@ async function loadcoctail() {
 }
 
 // warning
-// window.onbeforeunload = function () {
-//     return "Are you sure?";
-// }
+window.onbeforeunload = function () {
+    return "Are you sure?";
+}
 
 //size
 cvs.width = window.innerWidth;
