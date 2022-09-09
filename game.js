@@ -92,7 +92,7 @@ document.addEventListener("keydown", (e) => {
 document.addEventListener('click', (e) => {
     yPos -= 40;
     grootSounds.play()
-    window.navigator.vibrate(400)
+    window.navigator.vibrate(2000)
     console.log(e)
 })
 
