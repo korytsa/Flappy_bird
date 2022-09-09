@@ -6,7 +6,7 @@ const result = document.querySelector('.result');
 const ratingBtn = document.querySelector('.ratingBtn');
 const mainPageBtn = document.querySelector('.mainPageBtn');
 const againBtn = document.querySelector('.againBtn');
-const joke = document.querySelector('.joke');
+const coctail = document.querySelector('.coctail');
 
 let groot = new Image();
 let bg = new Image();
@@ -30,13 +30,14 @@ pipeBottom.src = "img/bottom.png";
 
 document.addEventListener('DOMContentLoaded', draw)
 
-async function loadJoke(){
-    const response = await fetch('https://v2.jokeapi.dev/joke/Any?blacklistFlags=religious');
+//random coctail
+async function loadcoctail() {
+    const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
     const data = await response.json();
 
-    joke.textContent = `${data.setup}`;
-    console.log(data.setup)
+    coctail.textContent = `${data.drinks[0].strDrink}`;
 }
+
 // warning
 // window.onbeforeunload = function () {
 //     return "Are you sure?";
@@ -62,6 +63,9 @@ fail_audio.src = "sounds/fail.mp3";
 
 //controls
 document.addEventListener("keydown", (e) => {
+    if (e.keyCode === 38 || e.keyCode === 40 || e.keyCode === 39 || e.keyCode === 37 || e.keyCode === 32) {
+
+    }
     switch (e.keyCode) {
         case 38:
             yPos -= 25;
@@ -94,12 +98,14 @@ document.addEventListener('touchend', () => {
     window.navigator.vibrate(400)
 })
 
+//logic
 pipe[0] = {
     x: cvs.width,
     y: 0
 }
 
 function draw() {
+
     ctx.drawImage(bg, 0, 0, cvs.width, cvs.height);
     ctx.drawImage(groot, xPos, yPos);
 
@@ -114,6 +120,7 @@ function draw() {
 
     requestAnimationFrame(draw);
 }
+const array = [];
 
 function drawGroot() {
     yPos += grav;
@@ -148,10 +155,12 @@ function drawGroot() {
             popup.style.display = 'block';
             pipe[i].x = cvs.width;
             result.textContent = `Your results: ${score}`;
+
             if (failAudioPlay === 0) {
-                loadJoke()
+                loadcoctail()
                 fail_audio.play();
                 failAudioPlay += 1;
+
             }
         }
 
@@ -168,16 +177,15 @@ againBtn.addEventListener('click', () => {
 })
 
 ratingBtn.addEventListener('click', () => {
-    // const obj = {
-    //     'name': localStorage.getItem('player'),
-    //     'score': score
-    // };
-    // localStorage.setItem('object', JSON.stringify(obj));
+    let arr = JSON.parse(localStorage.getItem('result')) || [];
+    arr.push({
+        'name': localStorage.getItem('player'),
+        'score': score
+    })
+    localStorage.setItem('result', JSON.stringify(arr));
     window.location = "./result.html";
 })
 
 mainPageBtn.addEventListener('click', () => {
     window.location = "./index.html";
 })
-
-//random joke

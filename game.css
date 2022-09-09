@@ -41,7 +41,7 @@
     color: #b02b2a;
     text-shadow: 0 0 15px #281718;
 }
-.joke{
+.coctail{
     text-align: center;
     font-size: 2em;
     margin-bottom: 3%;
@@ -96,7 +96,7 @@
         font-size: 1.3em;
         margin-bottom: 5%;
     }
-    .joke{
+    .coctail{
         font-size: 1.2em;
         margin-bottom: 2%;
     }
@@ -114,7 +114,7 @@
         font-size: 0.9em;
         margin-bottom: 4%;
     }
-    .joke{
+    .coctail{
         font-size: 0.7em;
         margin-bottom: 3%;
     }
